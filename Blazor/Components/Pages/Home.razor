@@ -1,0 +1,80 @@
+@page "/"
+@using DTOs
+@using Microsoft.AspNetCore.Components
+@using Services
+@inject StoryService StoryService
+@inject NavigationManager NavigationManager
+@namespace Blazor.Components.Pages
+
+
+<div class="container mt-4" style="max-width: 800px;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>📚 Stories</h2>
+        <button class="btn btn-primary" @onclick="NavigateToCreate">➕ Create New Story</button>
+    </div>
+
+    @if (stories == null)
+    {
+        <div class="text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Loading stories...</p>
+        </div>
+    }
+    else if (!stories.Any())
+    {
+        <p class="text-muted">No stories found. Be the first to create one!</p>
+    }
+    else
+    {
+        <div class="list-group">
+            @foreach (var s in stories)
+            {
+                <div class="list-group-item list-group-item-action mb-3 shadow-sm rounded">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h5 class="mb-1">@s.Title</h5>
+                            <p class="mb-1">@s.Content</p>
+                            <small class="text-muted">
+                                Department: @s.DepartmentId • Created: @s.CreatedAt.ToString("g")
+                            </small>
+                        </div>
+                        <div class="ms-3 d-flex align-items-start">
+                            <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteStory(s.Id)">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private List<StoryDto> stories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        stories = await StoryService.GetStoriesAsync();
+    }
+
+    private void NavigateToCreate()
+    {
+        NavigationManager.NavigateTo("/create-story");
+    }
+
+    private async Task DeleteStory(int id)
+    {
+        var confirm = await JS.InvokeAsync<bool>("confirm", $"Are you sure you want to delete story #{id}?");
+        if (!confirm)
+            return;
+
+        await StoryService.DeleteStoryAsync(id);
+        stories = await StoryService.GetStoriesAsync();
+    }
+
+    [Inject]
+    private IJSRuntime JS { get; set; }
+}
