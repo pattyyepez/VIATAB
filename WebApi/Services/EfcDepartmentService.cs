@@ -1,6 +1,6 @@
 namespace WebApi.Services;
 
-public class EfcDepartmentService
+public class EfcDepartmentService : IDepartmentService
 {
     
 }
