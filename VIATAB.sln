@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entiti
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{01815FC5-79E8-4D0E-B37C-6E4982D6FDA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{354C3B4B-8B90-447C-9833-9F0E36485CDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,8 +16,13 @@ Global
 		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354C3B4B-8B90-447C-9833-9F0E36485CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354C3B4B-8B90-447C-9833-9F0E36485CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354C3B4B-8B90-447C-9833-9F0E36485CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354C3B4B-8B90-447C-9833-9F0E36485CDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9} = {01815FC5-79E8-4D0E-B37C-6E4982D6FDA2}
+		{354C3B4B-8B90-447C-9833-9F0E36485CDD} = {01815FC5-79E8-4D0E-B37C-6E4982D6FDA2}
 	EndGlobalSection
 EndGlobal
