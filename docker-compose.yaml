@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend-net
+    restart: always
+
+  webapi:
+    build:
+      context: .
+      dockerfile: WebApi/Dockerfile
+    container_name: webapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DB_HOST: postgres-db
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+    ports:
+      - "5000:8080"  # Mapping container port 8080 to host port 5000
+    depends_on:
+      - postgres-db
+    entrypoint: [ "/bin/sh", "-c", "dotnet ef database update && dotnet WebApi.dll" ]
+    networks:
+      - backend-net
+    restart: always
+
+networks:
+  backend-net:
+    driver: bridge
+
+volumes:
+  postgres-data:
