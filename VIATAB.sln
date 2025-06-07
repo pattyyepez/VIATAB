@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{01815FC5-79E8-4D0E-B37C-6E4982D6FDA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AE45DD8E-AFCE-4B57-852E-63F8EA625FE9} = {01815FC5-79E8-4D0E-B37C-6E4982D6FDA2}
+	EndGlobalSection
+EndGlobal
