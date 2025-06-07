@@ -18,7 +18,7 @@ public class ViaTabloidDbContextFactory : IDesignTimeDbContextFactory<ViaTabloid
         var host = Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
         var port = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
         var user = Environment.GetEnvironmentVariable("DB_USER") ?? "postgres";
-        var password = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "ViaViaVia";
+        var password = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "calculadora11";
         var database = Environment.GetEnvironmentVariable("DB_NAME") ?? "VIATAB";
 
         var connectionString = $"Host={host};Port={port};Username={user};Password={password};Database={database}";
