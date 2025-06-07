@@ -1,0 +1,20 @@
+# This is a generated file. Not intended for manual editing.
+version: "3.8"
+services:
+  webapi:
+    build:
+      context: "C:\\Users\\domin\\RiderProjects\\VIATAB"
+      dockerfile: "WebApi/Dockerfile"
+      target: "build"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/WebApi.dll"
+    environment: {}
+    image: "webapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\domin\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\domin\\RiderProjects\\VIATAB\\WebApi:/app:rw"
+    - "C:\\Users\\domin\\RiderProjects\\VIATAB:/src:rw"
+    working_dir: "/app"
