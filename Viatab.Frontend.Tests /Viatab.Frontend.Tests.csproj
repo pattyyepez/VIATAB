@@ -27,10 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Services\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Blazor\Blazor.csproj" />
       <ProjectReference Include="..\DTOs\DTOs.csproj" />
     </ItemGroup>
