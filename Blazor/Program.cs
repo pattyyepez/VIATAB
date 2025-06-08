@@ -6,13 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents(); 
 
-builder.Services.AddScoped<HttpClient>(sp =>
+var apiBaseUrl = builder.Configuration["ApiBaseUrl"] ?? "http://webapi:8080";
+
+builder.Services.AddScoped(sp =>
 {
     return new HttpClient
     {
-        BaseAddress = new Uri("http://localhost:5000/") 
+        BaseAddress = new Uri(apiBaseUrl)
     };
 });
+
 
 builder.Services.AddScoped<StoryService>();
 

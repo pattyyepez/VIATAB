@@ -16,7 +16,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: corsPolicyName,
         policy =>
         {
-            policy.WithOrigins("https://localhost:7155") // tu frontend Blazor
+            policy.WithOrigins("https://localhost:5001") // tu frontend Blazor
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
@@ -41,7 +41,7 @@ builder.Services.AddDbContext<ViaTabloidDbContext>(options =>
         var host = Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
         var port = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
         var user = Environment.GetEnvironmentVariable("DB_USER") ?? "postgres";
-        var password = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "ViaViaVia";
+        var password = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "calculadora11";
         var database = Environment.GetEnvironmentVariable("DB_NAME") ?? "VIATAB";
 
         connectionString = $"Host={host};Port={port};Username={user};Password={password};Database={database}";
