@@ -6,10 +6,10 @@ namespace WebApi.Services;
 
 public class EfcStoryService : IStoryService
 {
-    private readonly TabloidDataAccess _access;
+    private readonly ITabloidDataAccess _access;
     private readonly ILogger<EfcStoryService> _logger;
   
-    public EfcStoryService(TabloidDataAccess access, ILogger<EfcStoryService> logger)
+    public EfcStoryService(ITabloidDataAccess access, ILogger<EfcStoryService> logger)
     {
         _access = access;
         _logger = logger;

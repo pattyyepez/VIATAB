@@ -30,7 +30,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IDepartmentService, EfcDepartmentService>();
-builder.Services.AddScoped<TabloidDataAccess>();
+builder.Services.AddScoped<ITabloidDataAccess, TabloidDataAccess>();
 builder.Services.AddScoped<IStoryService, EfcStoryService>();
 builder.Services.AddDbContext<ViaTabloidDbContext>(options =>
 {
