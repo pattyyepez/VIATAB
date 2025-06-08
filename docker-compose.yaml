@@ -37,6 +37,22 @@ services:
       - backend-net
     restart: always
 
+  blazor:
+    build:
+      context: .
+      dockerfile: Blazor/Dockerfile
+    container_name: blazor
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    ports:
+      - "5001:8080"  
+    depends_on:
+      - webapi
+    networks:
+      - backend-net
+    restart: always
+
+
 networks:
   backend-net:
     driver: bridge

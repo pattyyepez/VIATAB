@@ -4,9 +4,11 @@ WORKDIR /src
 
 # Copy solution and required projects
 COPY ../*.sln .
-COPY ./Blazor/*.csproj ./Blazor/
-COPY ./DTOS/*.csproj ./DTOS/
-COPY ./Services/*.csproj ./Services/
+COPY ../Blazor ./Blazor/
+COPY ../DTOs ./DTOs/
+COPY ../WebApi ./WebApi/
+COPY ../Database ./Database/
+COPY ../Entities ./Entities/
 
 # Restore dependencies
 RUN dotnet restore
