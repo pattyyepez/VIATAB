@@ -3,7 +3,7 @@ using Entities;
 
 namespace Database;
 
-public class TabloidDataAccess
+public class TabloidDataAccess : ITabloidDataAccess
 {
     private readonly ViaTabloidDbContext _context;
 
