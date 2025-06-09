@@ -1,38 +1,34 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
-# Set the working directory for the build process
 WORKDIR /src
 
-# Copy the solution file (if it's one level above the Dockerfile, adjust path)
-COPY ../*.sln .
+# Copy the solution and projects
+COPY *.sln .
+COPY WebApi/ WebApi/
+COPY Database/ Database/
+COPY Entities/ Entities/
+COPY DTOs/ DTOs/
 
-# Copy the WebApi, Database, Entities, and DTOs projects into the container
-COPY ../WebApi ./WebApi/
-COPY ../Database ./Database/
-COPY ../Entities ./Entities/
-COPY ../DTOs ./DTOs/
+# Install EF Tools
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="${PATH}:/root/.dotnet/tools"
 
-# Set the working directory for WebApi project
+# Run restore
 WORKDIR /src/WebApi
-
-# Restore the dependencies
 RUN dotnet restore
 
-# Install EF tools (global, so we can run migrations)
-#RUN dotnet tool install --global dotnet-ef
-#ENV PATH="$PATH:/root/.dotnet/tools"
-#
-#RUN dotnet ef database update --project /src/Database/ --startup-project /src/WebApi/
-RUN dotnet build -c Release -o /app/build
+# Run migrations!
+RUN dotnet ef database update --project ../Database --startup-project . || echo "Migration failed"
 
-FROM build AS publish
+# Build & publish
+RUN dotnet build -c Release -o /app/build
 RUN dotnet publish -c Release -o /app/publish
 
+# Final image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
+COPY --from=build /app/publish .
 
 ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
-
 ENTRYPOINT ["dotnet", "WebApi.dll"]
