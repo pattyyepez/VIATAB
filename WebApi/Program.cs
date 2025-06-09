@@ -5,6 +5,7 @@ using DotNetEnv;
 
 
 Directory.SetCurrentDirectory(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory)));
+
 Env.Load(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".env"));
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IDepartmentService, EfcDepartmentService>();
+
 builder.Services.AddScoped<ITabloidDataAccess, TabloidDataAccess>();
 builder.Services.AddScoped<IStoryService, EfcStoryService>();
 builder.Services.AddDbContext<ViaTabloidDbContext>(options =>

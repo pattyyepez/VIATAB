@@ -6,6 +6,7 @@ namespace WebApi.Services;
 
 public class EfcStoryService : IStoryService
 {
+
     private readonly ITabloidDataAccess _access;
     private readonly ILogger<EfcStoryService> _logger;
   
@@ -33,7 +34,7 @@ public class EfcStoryService : IStoryService
     {
         return ToDto(await _access.GetStoryByIdAsync(id));
     }
-    
+
     public async Task<StoryDto> UpdateAsync(int id, UpdateStoryDto story)
     {
         Story temp = new Story()
@@ -43,19 +44,19 @@ public class EfcStoryService : IStoryService
         };
         return ToDto(await _access.UpdateStoryAsync(id, temp));
     }
-    
+
     public async Task DeleteByIdAsync(int id)
     {
         await _access.DeleteStoryAsync(id);
     }
-    
+
     public async Task<List<StoryDto>> GetAll()
     {
         return (await _access.GetAllStoriesAsync())
             .Select(ToDto)
             .ToList();
     }
-    
+
     private StoryDto ToDto(Story story)
     {
         return new StoryDto()
