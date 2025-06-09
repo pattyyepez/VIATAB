@@ -3,7 +3,7 @@ version: "3.8"
 services:
   blazor:
     build:
-      context: "C:\\Users\\patty\\OneDrive\\Documentos\\VIATAB"
+      context: "C:\\Users\\domin\\RiderProjects\\VIATAB"
       dockerfile: "Blazor/Dockerfile"
       target: "build"
     command: []
@@ -15,13 +15,13 @@ services:
     image: "blazor:dev"
     ports: []
     volumes:
-    - "C:\\Users\\patty\\.nuget\\packages:/root/.nuget/packages"
-    - "C:\\Users\\patty\\OneDrive\\Documentos\\VIATAB\\Blazor:/app:rw"
-    - "C:\\Users\\patty\\OneDrive\\Documentos\\VIATAB:/src:rw"
+    - "C:\\Users\\domin\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\domin\\RiderProjects\\VIATAB\\Blazor:/app:rw"
+    - "C:\\Users\\domin\\RiderProjects\\VIATAB:/src:rw"
     working_dir: "/app"
   webapi:
     build:
-      context: "C:\\Users\\patty\\OneDrive\\Documentos\\VIATAB"
+      context: "C:\\Users\\domin\\RiderProjects\\VIATAB"
       dockerfile: "WebApi/Dockerfile"
       target: "build"
     command: []
@@ -32,7 +32,7 @@ services:
     image: "webapi:dev"
     ports: []
     volumes:
-    - "C:\\Users\\patty\\.nuget\\packages:/root/.nuget/packages"
-    - "C:\\Users\\patty\\OneDrive\\Documentos\\VIATAB\\WebApi:/app:rw"
-    - "C:\\Users\\patty\\OneDrive\\Documentos\\VIATAB:/src:rw"
+    - "C:\\Users\\domin\\.nuget\\packages:/root/.nuget/packages"
+    - "C:\\Users\\domin\\RiderProjects\\VIATAB\\WebApi:/app:rw"
+    - "C:\\Users\\domin\\RiderProjects\\VIATAB:/src:rw"
     working_dir: "/app"

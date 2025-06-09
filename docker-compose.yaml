@@ -32,7 +32,7 @@ services:
       - "5000:8080"  # Mapping container port 8080 to host port 5000
     depends_on:
       - postgres-db
-    entrypoint: [ "/bin/sh", "-c", "dotnet ef database update && dotnet WebApi.dll" ]
+    entrypoint: [ "dotnet", "WebApi.dll" ]
     networks:
       - backend-net
     restart: always
