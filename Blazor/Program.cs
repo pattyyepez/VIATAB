@@ -16,8 +16,7 @@ builder.Services.AddScoped(sp =>
     };
 });
 
-
-builder.Services.AddScoped<StoryService>();
+builder.Services.AddScoped<IStoryService, StoryService>();
 
 var app = builder.Build();
 

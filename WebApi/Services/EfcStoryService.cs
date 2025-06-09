@@ -6,15 +6,16 @@ namespace WebApi.Services;
 
 public class EfcStoryService : IStoryService
 {
-    private readonly TabloidDataAccess _access;
+
+    private readonly ITabloidDataAccess _access;
     private readonly ILogger<EfcStoryService> _logger;
-    
-    public EfcStoryService(ViaTabloidDbContext dbContext, ILogger<EfcStoryService> logger)
+  
+    public EfcStoryService(ITabloidDataAccess access, ILogger<EfcStoryService> logger)
     {
-        _access = new TabloidDataAccess(dbContext);
+        _access = access;
         _logger = logger;
     }
-
+    
     public async Task<StoryDto> AddAsync(CreateStoryDto story)
     {
         Story temp = new Story()
@@ -23,12 +24,12 @@ public class EfcStoryService : IStoryService
             Content = story.Content,
             DepartmentId = story.DepartmentId,
         };
-        
+      
         temp = await _access.CreateStoryAsync(temp);
-        
+      
         return ToDto(temp);
     }
-
+    
     public async Task<StoryDto> GetByIdAsync(int id)
     {
         return ToDto(await _access.GetStoryByIdAsync(id));
